@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>✨ Happy Janmashtami ✨</title>
+  <meta name="description" content="A festive, animated Janmashtami greeting page with peacock feather, flute, jhula, matki, falling flowers and music." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700;900&family=Tangerine:wght@700&family=Great+Vibes&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg1:#0a0b1a; --bg2:#1b1f46; --gold:#ffd166; --saffron:#ff7a00; --peacock:#0aa; --radha:#f2a; --leaf:#3ddc97; --light:#fff6d5;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; overflow:hidden; color:#fff; font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
+      background: radial-gradient(1200px 600px at 70% -10%, rgba(255,255,255,.12), transparent 60%),
+                  radial-gradient(800px 400px at 10% 110%, rgba(255,255,255,.08), transparent 60%),
+                  linear-gradient(120deg, var(--bg1), var(--bg2));
+      animation: hue 20s linear infinite;
+    }
+    @keyframes hue{to{filter:hue-rotate(360deg)}}
+
+    /* floating stars */
+    .stars{position:fixed; inset:0; pointer-events:none; background:
+      radial-gradient(2px 2px at 15% 25%,#fff8,transparent 60%),
+      radial-gradient(1.5px 1.5px at 45% 35%,#fff8,transparent 60%),
+      radial-gradient(1.2px 1.2px at 65% 15%,#fff6,transparent 60%),
+      radial-gradient(1.7px 1.7px at 80% 60%,#fff8,transparent 60%),
+      radial-gradient(1.3px 1.3px at 25% 70%,#fff7,transparent 60%),
+      radial-gradient(1.1px 1.1px at 10% 50%,#fff6,transparent 60%);
+      opacity:.55; mix-blend-mode:screen; filter:drop-shadow(0 0 4px #fff8);
+    }
+
+    header{
+      position:fixed; top:0; left:0; right:0; display:flex; align-items:center; justify-content:space-between; gap:12px;
+      padding:14px 18px; backdrop-filter: blur(8px) saturate(120%);
+      background:linear-gradient(90deg, #0000006b, #0000);
+      border-bottom:1px solid #ffffff1a;
+      z-index:30;
+    }
+    .brand{display:flex; align-items:center; gap:10px; font-weight:900; letter-spacing:.5px}
+    .brand .dot{width:12px; height:12px; background:var(--gold); border-radius:50%; box-shadow:0 0 12px 4px var(--gold)}
+    .actions{display:flex; gap:8px; flex-wrap:wrap}
+    button{border:none; padding:10px 14px; border-radius:16px; cursor:pointer; font-weight:700; letter-spacing:.4px;
+      background:#ffffff14; color:white; backdrop-filter: blur(4px); box-shadow: 0 6px 16px #0008; transition: transform .2s ease, background .3s ease, box-shadow .3s ease;}
+    button:hover{transform:translateY(-2px); background:#ffffff22; box-shadow: 0 10px 24px #000a}
+    button:active{transform:translateY(0)}
+    .primary{background:linear-gradient(135deg, #ffd166, #ff7a00); color:#1b1400; text-shadow:0 1px 0 #ffffffaa}
+
+    main{position:relative; height:100%; display:grid; place-items:center; padding:96px 16px 24px}
+
+    .card{position:relative; width:min(1100px, 95vw); aspect-ratio: 16/9; border-radius:28px; overflow:hidden;
+      background:linear-gradient(180deg,#ffffff0f,#ffffff05 40%,#0000), radial-gradient(800px 600px at 90% 10%,#00ffff0a,#0000 60%);
+      box-shadow:0 25px 80px #000c, inset 0 0 0 1px #ffffff14;
+      display:grid; grid-template-columns:1.2fr .8fr; gap:0; align-items:stretch;
+    }
+    .left, .right{position:relative}
+
+    /* Glow rings */
+    .ring{position:absolute; border-radius:50%; filter: blur(18px); opacity:.6; mix-blend-mode:screen;}
+    .r1{width:540px;height:540px;left:-80px;top:-100px;background:conic-gradient(from 0deg, var(--gold), var(--saffron), var(--peacock), #a0f, var(--gold)); animation:spin 16s linear infinite}
+    .r2{width:320px;height:320px;right:-90px;bottom:-90px;background:conic-gradient(from 180deg,#9ff, #f9f, #ffd166, #9ff); animation:spin 24s linear infinite reverse}
+    @keyframes spin{to{transform:rotate(360deg)}}
+
+    /* Heading */
+    .heading{position:absolute; z-index:5; left:50%; top:8%; transform:translateX(-50%); text-align:center}
+    .heading h1{
+      margin:0; font-family:'Great Vibes', 'Tangerine', cursive; font-size: clamp(36px, 7vw, 94px);
+      color:var(--light); text-shadow:0 0 14px #fff7, 0 0 42px #ffd166aa, 0 0 80px #ff7a00aa;
+      letter-spacing:2px; filter: drop-shadow(0 4px 12px #000a);
+    }
+    .heading .sub{margin-top:-8px; font-weight:800; letter-spacing:2px; text-transform:uppercase; font-size: clamp(10px, 2vw, 16px); opacity:.9}
+    .mantra{margin-top:6px; font-size:clamp(12px, 2.2vw, 20px); font-weight:700; color:#fff; opacity:.9;
+      text-shadow:0 2px 10px #000, 0 0 18px #0ff7; animation: wave 3.5s ease-in-out infinite}
+    @keyframes wave{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+
+    /* Krishna scene */
+    .scene{position:relative; height:100%; overflow:hidden; padding:24px}
+    .flute-wrap{position:absolute; left:-10%; top:18%; transform:rotate(-8deg)}
+    .flute{width:min(780px, 78vw); filter: drop-shadow(0 6px 8px #0009)}
+    .feather{position:absolute; left:8%; top:6%; width:120px; transform:rotate(-18deg); filter: drop-shadow(0 8px 12px #000a); animation:float 4s ease-in-out infinite}
+    @keyframes float{50%{transform:translateY(-8px) rotate(-18deg)}}
+
+    /* Swinging jhula */
+    .jhula{position:absolute; right:6%; top:10%; width:min(260px, 28vw); transform-origin: top center; animation:swing 5.2s ease-in-out infinite; filter:drop-shadow(0 16px 18px #000b)}
+    @keyframes swing{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(6deg)}}
+
+    /* Butter pot */
+    .matki{position:absolute; right:12%; bottom:10%; width:min(220px, 22vw); animation:bob 4.5s ease-in-out infinite; filter: drop-shadow(0 8px 12px #000a)}
+    @keyframes bob{50%{transform:translateY(-8px)}}
+
+    /* Right side quote card */
+    .right{display:grid; place-items:center; padding:24px}
+    .quote{
+      width:min(450px, 88%); background:linear-gradient(180deg,#ffffff10,#ffffff06); border-radius:24px; padding:22px 18px 18px;
+      border:1px solid #ffffff1f; box-shadow: 0 18px 40px #000b, inset 0 0 40px #ffffff07;
+    }
+    .q-title{font-weight:900; letter-spacing:.8px; margin-bottom:10px; color:var(--gold); text-transform:uppercase}
+    .q-line{font-family:"Tangerine", cursive; font-size: clamp(22px, 4.2vw, 46px); line-height:1.1; text-shadow:0 1px 0 #000}
+    .divider{height:1px; background:linear-gradient(90deg, #0000, #ffffff30, #0000); margin:12px 0}
+    .wish{font-size:clamp(13px, 2.2vw, 16px); opacity:.92}
+
+    /* Floating petals container */
+    .petals{position:fixed; inset:0; pointer-events:none; overflow:hidden; z-index:5}
+    .petal{position:absolute; user-select:none; font-size:24px; opacity:.9; filter: drop-shadow(0 2px 6px #0009); animation: fall linear forwards}
+    @keyframes fall{to{transform:translateY(110vh) rotate(360deg); opacity:.95}}
+
+    /* Footer ribbon */
+    footer{position:fixed; left:50%; bottom:14px; transform:translateX(-50%); background:#ffffff14; border:1px solid #ffffff24; border-radius:18px; padding:8px 14px; font-weight:700; letter-spacing:.4px; box-shadow:0 10px 24px #000b;}
+
+    /* Accessibility */
+    .sr-only{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0}
+
+    @media (max-width:900px){
+      .card{grid-template-columns:1fr; aspect-ratio:auto; min-height:70vh}
+      .jhula{top:6%; right:3%}
+      .matki{right:6%}
+    }
+  </style>
+</head>
+<body>
+  <div class="stars" aria-hidden="true"></div>
+
+  <header>
+    <div class="brand" aria-label="Janmashtami brand">
+      <span class="dot" aria-hidden="true"></span>
+      <span>Janmashtami</span>
+    </div>
+    <div class="actions">
+      <button class="primary" id="btnStart">🎉 Start Celebration</button>
+      <button id="btnMusic">▶️ Play Aarti</button>
+      <button id="btnMute" title="Mute/Unmute">🔈 Mute</button>
+      <button id="btnShare" title="Copy greeting">🔗 Share</button>
+    </div>
+  </header>
+
+  <main>
+    <div class="card" role="region" aria-label="Festive scene">
+      <div class="heading">
+        <h1>Happy Janmashtami</h1>
+        <div class="sub">Celebrate the birth of Lord Krishna</div>
+        <div class="mantra">जय श्री कृष्ण • जय कन्हैया लाल की</div>
+      </div>
+
+      <div class="left scene">
+        <!-- Glow rings -->
+        <span class="ring r1" aria-hidden="true"></span>
+        <span class="ring r2" aria-hidden="true"></span>
+
+        <!-- Peacock feather -->
+        <svg class="feather" viewBox="0 0 200 200" aria-label="Peacock feather" role="img">
+          <defs>
+            <radialGradient id="eye" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#0ff"/>
+              <stop offset="40%" stop-color="#0aa"/>
+              <stop offset="60%" stop-color="#2b2bff"/>
+              <stop offset="85%" stop-color="#6b00b3"/>
+            </radialGradient>
+          </defs>
+          <ellipse cx="120" cy="80" rx="28" ry="22" fill="url(#eye)" stroke="#00ffd5" stroke-width="2"/>
+          <path d="M20 170 C80 100, 90 90, 120 80" stroke="#00ffc3" stroke-width="4" fill="none"/>
+          <path d="M25 160 C85 95, 90 92, 120 80" stroke="#00ffa0" stroke-width="2.5" fill="none"/>
+          <path d="M18 178 C82 104, 96 92, 124 82" stroke="#7bffcc" stroke-width="2" fill="none"/>
+        </svg>
+
+        <!-- Flute -->
+        <div class="flute-wrap">
+          <svg class="flute" viewBox="0 0 1000 180" aria-label="Krishna flute" role="img">
+            <defs>
+              <linearGradient id="wood" x1="0" x2="1"><stop offset="0" stop-color="#9c5a11"/><stop offset="1" stop-color="#c48c2a"/></linearGradient>
+            </defs>
+            <rect x="20" y="60" width="920" height="34" rx="8" fill="url(#wood)" stroke="#71440c" stroke-width="3"/>
+            <!-- holes -->
+            <g fill="#3b2205">
+              <circle cx="170" cy="76" r="7"/><circle cx="250" cy="76" r="7"/><circle cx="330" cy="76" r="7"/>
+              <circle cx="410" cy="76" r="7"/><circle cx="490" cy="76" r="7"/><circle cx="570" cy="76" r="7"/>
+              <circle cx="650" cy="76" r="7"/><circle cx="730" cy="76" r="7"/><circle cx="810" cy="76" r="7"/>
+            </g>
+            <!-- tassel -->
+            <path d="M910 94 q 12 40 -18 70" stroke="#ffd166" stroke-width="6" fill="none"/>
+            <path d="M912 94 q 14 44 -12 72" stroke="#ff7a00" stroke-width="4" fill="none"/>
+          </svg>
+        </div>
+
+        <!-- Swinging Jhula (cradle) -->
+        <svg class="jhula" viewBox="0 0 360 360" aria-label="Swinging jhula" role="img">
+          <defs>
+            <linearGradient id="gGold" x1="0" x2="1"><stop offset="0" stop-color="#ffd166"/><stop offset="1" stop-color="#ff7a00"/></linearGradient>
+          </defs>
+          <line x1="180" y1="0" x2="100" y2="100" stroke="url(#gGold)" stroke-width="6"/>
+          <line x1="180" y1="0" x2="260" y2="100" stroke="url(#gGold)" stroke-width="6"/>
+          <rect x="80" y="100" width="200" height="18" rx="8" fill="url(#gGold)"/>
+          <rect x="100" y="118" width="160" height="70" rx="16" fill="#2a1a00" stroke="#ffd166" stroke-width="4"/>
+          <circle cx="180" cy="153" r="10" fill="#ffd166"/>
+        </svg>
+
+        <!-- Matki (butter pot) -->
+        <svg class="matki" viewBox="0 0 260 260" aria-label="Butter pot" role="img">
+          <defs>
+            <linearGradient id="gMatki" x1="0" x2="1"><stop offset="0" stop-color="#8c3b00"/><stop offset="1" stop-color="#c56a15"/></linearGradient>
+          </defs>
+          <ellipse cx="130" cy="160" rx="90" ry="70" fill="url(#gMatki)" stroke="#5a2600" stroke-width="6"/>
+          <ellipse cx="130" cy="120" rx="80" ry="18" fill="#5a2600"/>
+          <path d="M60 150 q70 30 140 0" stroke="#ffd166" stroke-width="6" fill="none"/>
+          <!-- butter -->
+          <path d="M60 120 q70 26 140 0 v20 q-70 26 -140 0 z" fill="#fff6d5"/>
+        </svg>
+      </div>
+
+      <div class="right">
+        <div class="quote">
+          <div class="q-title">Blessings</div>
+          <div class="q-line">"Where there is Krishna, there is Dharma, Victory and Prosperity."</div>
+          <div class="divider"></div>
+          <div class="wish">May Lord Krishna steal your worries and fill your home with happiness, peace, and love. Wishing you and your family a very <strong>Happy Janmashtami!</strong></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    Tap <strong>Start Celebration</strong> to release flowers 🌸 & music 🎵
+  </footer>
+
+  <!-- Audio: Replace src with your aarti/mp3 file path. Keep muted initially due to browser rules. -->
+  <audio id="aarti" src="janmashtami.mp3" preload="auto" loop muted></audio>
+
+  <div class="petals" aria-hidden="true"></div>
+
+  <span class="sr-only" id="sr-status" aria-live="polite"></span>
+
+  <script>
+    const btnStart = document.getElementById('btnStart');
+    const btnMusic = document.getElementById('btnMusic');
+    const btnMute  = document.getElementById('btnMute');
+    const btnShare = document.getElementById('btnShare');
+    const petalsLayer = document.querySelector('.petals');
+    const audio = document.getElementById('aarti');
+    const sr = document.getElementById('sr-status');
+
+    let petalsTimer = null;
+    let celebrating = false;
+
+    function rand(min, max){ return Math.random()*(max-min)+min }
+
+    function dropPetal(){
+      const el = document.createElement('span');
+      el.className = 'petal';
+      const set = ['🌸','💮','🪷','🌺'];
+      el.textContent = set[Math.floor(Math.random()*set.length)];
+      const size = rand(16, 34);
+      el.style.fontSize = size + 'px';
+      el.style.left = rand(-5, 100) + 'vw';
+      el.style.top = '-5vh';
+      el.style.animationDuration = rand(5, 11) + 's';
+      el.style.animationDelay = '0s';
+      el.style.transform = `translateY(0) rotate(${rand(-40,40)}deg)`;
+      petalsLayer.appendChild(el);
+      setTimeout(()=> el.remove(), 12000);
+    }
+
+    function startPetals(){
+      if(petalsTimer) return;
+      petalsTimer = setInterval(()=>{
+        for(let i=0;i<3;i++) dropPetal();
+      }, 500);
+    }
+    function stopPetals(){
+      clearInterval(petalsTimer); petalsTimer = null;
+    }
+
+    async function shareGreeting(){
+      const text = '🌟 Happy Janmashtami! जय श्री कृष्ण 🌟\nMay Lord Krishna bless you with joy, peace and love.';
+      try{
+        if(navigator.share){
+          await navigator.share({title:'Happy Janmashtami', text, url: location.href});
+        } else {
+          await navigator.clipboard.writeText(text);
+          alert('Greeting copied! Share it anywhere ✨');
+        }
+      }catch(e){ console.log(e); }
+    }
+
+    function speak(msg){ sr.textContent = msg; }
+
+    btnStart.addEventListener('click', async ()=>{
+      celebrating = !celebrating;
+      if(celebrating){
+        btnStart.textContent = '⏸️ Pause Celebration';
+        startPetals();
+        // try to autoplay with user gesture
+        try{ audio.muted = false; await audio.play(); btnMusic.textContent = '⏸️ Pause Aarti'; }catch{}
+        speak('Celebration started');
+      }else{
+        btnStart.textContent = '🎉 Start Celebration';
+        stopPetals();
+        audio.pause();
+        btnMusic.textContent = '▶️ Play Aarti';
+        speak('Celebration paused');
+      }
+    });
+
+    btnMusic.addEventListener('click', async ()=>{
+      if(audio.paused){
+        try{ audio.muted = false; await audio.play(); btnMusic.textContent = '⏸️ Pause Aarti'; speak('Aarti playing') }catch{ alert('Add your MP3 at janmashtami.mp3 or allow audio.') }
+      } else { audio.pause(); btnMusic.textContent = '▶️ Play Aarti'; speak('Aarti paused') }
+    });
+
+    btnMute.addEventListener('click', ()=>{
+      audio.muted = !audio.muted;
+      btnMute.textContent = audio.muted ? '🔇 Unmute' : '🔈 Mute';
+    });
+
+    btnShare.addEventListener('click', shareGreeting);
+
+    // little confetti burst on click
+    window.addEventListener('click', (e)=>{
+      for(let i=0;i<12;i++){
+        const c = document.createElement('span');
+        c.className = 'petal';
+        c.textContent = ['✨','🌸','💮','🪷','⭐'][Math.floor(Math.random()*5)];
+        c.style.left = e.clientX + 'px';
+        c.style.top = e.clientY + 'px';
+        c.style.animationDuration = rand(1.2, 2.2) + 's';
+        petalsLayer.appendChild(c);
+        setTimeout(()=> c.remove(), 2500);
+      }
+    });
+  </script>
+</body>
+</html>
